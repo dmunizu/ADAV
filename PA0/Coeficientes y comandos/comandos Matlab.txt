@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[b,a] = butter(4, 0.3);   % Generacion de los coeficientes 
+                          % Filtro de Butterworth de orden 4 y 
+                          % frecuencia de corte normalizada 0.3
+
+x = [1 zeros(1,50)];      % Generacion de un impulso a la entrada
+plot(x);
+
+neg_a = -a;
+y = zDFIIt4(x,neg_a,b);   % Filtrado (respuesta al impulso)
+plot(y);                  % Visualizacion de la respuesta al impulso 
+impz(b,a);                % Verificacion del resultado con la funcion 'impz'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x1 = 0:0.001:1;           % base de tiempos
+x2 = sin(2*pi*7*x1);      % señal de entrada (limpia, de baja frecuencia)
+plot(x1,x2);
+
+y1 = zDFIIt4(x2,neg_a,b); % Filtrado de la señal de baja frecuencia
+plot(x1,y1);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x3 = randn(1,1001);       % señal aleatoria (ruido)
+hist(x3,40);              % histograma del ruido
+x4 = x2 + x3/10;          % generacion de la señal de entrada, con ruido
+plot(x1,x4);
+
+y2 = zDFIIt4(x4,neg_a,b); % Filtrado de la señal de baja frecuencia con ruido
+plot(x1,y2);
+plot(x1,y1-y2);           % Comparacion entre la señal filtrada y la no filtrada...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x5 = sin(2*pi*200*x1);    % señal de entrada (de alta frecuencia)
+plot(x1,x5);
+
+y3 = zDFIIt4(x5,neg_a,b); % Filtrado de la señal de alta frecuencia
+plot(x1,y3);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x6 = x5 + x3/10;          % generacion de la señal de alta frecuencia con ruido
+plot(x1,x6);
+
+y4 = zDFIIt4(x6,neg_a,b); % Filtrado de la señal de alta frecuencia con ruido
+plot(x1,y4);
+plot(x1,y3-y4);           % Comparacion entre la señal filtrada y la no filtrada...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
