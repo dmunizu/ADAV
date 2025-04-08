@@ -1,11 +1,11 @@
 # compile vhdl design source files
 vhdl xil_defaultlib  \
-"../../../../../VHDL PA0/control.vhd" \
-"../../../../../VHDL PA0/datapath.vhd" \
-"../../../../../VHDL PA0/int_entrada.vhd" \
-"../../../../../VHDL PA0/int_salida.vhd" \
-"../../../../../VHDL PA0/top.vhd" \
-"../../../../../VHDL PA0/tb_top.vhd" \
+"../../../../../VHDL PA1/Implementacion/control.vhd" \
+"../../../../../VHDL PA1/Implementacion/datapath.vhd" \
+"../../../../../VHDL PA1/Implementacion/int_entrada.vhd" \
+"../../../../../VHDL PA1/Implementacion/int_salida.vhd" \
+"../../../../../VHDL PA1/Implementacion/top.vhd" \
+"../../../../../VHDL PA1/Simulacion/tb_top.vhd" \
 
 # Do not sort compile order
 nosort

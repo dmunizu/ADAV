@@ -1,53 +1,59 @@
-LIBRARY IEEE;
-USE IEEE.std_logic_1164.all;
-USE IEEE.std_logic_arith.all;
-USE IEEE.std_logic_unsigned.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.std_logic_arith.all;
+use IEEE.std_logic_unsigned.all;
 
-ENTITY control IS 
-  PORT (
-     reset, clk    : in std_logic;
-     validacion    : in std_logic;
-     flags         : in  std_logic_vector(7 downto 0);
-     comandos      : out std_logic_vector(7 downto 0);
-     fin           : out std_logic );
-END control;
+entity control is
+  port (
+    reset, clk : in std_logic;
+    validacion : in std_logic;
+    estado     : out std_logic_vector(3 downto 0);
+    fin        : out std_logic);
+end control;
 
-ARCHITECTURE behavior OF control IS
-  signal estado : std_logic;
-  --CONSTANT ck0 : integer := 0;    CONSTANT ck1 : integer := 1;
-  --CONSTANT ck2 : integer := 2;    CONSTANT ck3 : integer := 3;
-  --CONSTANT ck4 : integer := 4;    CONSTANT ck5 : integer := 5;
-  --CONSTANT ck6 : integer := 6;    CONSTANT ck7 : integer := 7;
-BEGIN  
-Proc_Estado : PROCESS (reset, clk)
-      BEGIN
-           IF reset='0' THEN estado <= '0';
-           ELSIF (clk'event AND clk='1') THEN
-                IF validacion = '0' THEN estado <= '0'; else estado <= '1'; END IF;
-                --IF (validacion = '0') THEN estado <= ck0; else estado <= ck1; END IF;
-                --IF estado = ck7 THEN estado <= ck0; END IF;
-                --IF flags = (…) THEN (…); END IF;
-           END IF; 
-      END PROCESS;
-      fin <= estado;
-      comandos <= "0000000" & estado;
-
-      --Proc_Comandos : PROCESS (reset, clk)
-      --BEGIN
-      --     IF reset='0' THEN     comandos <= “00000000”;   fin <= ‘0’;      
-      --     ELSIF (clk'event AND clk='1') THEN   
-      --          comandos <= “00000000”;     fin <= ‘0’;
-      --          CASE estado IS
-      --               WHEN ck0:   --comandos <= “00000000”;     
-      --               WHEN ck1:   --comandos <= “00000000”;     
-      --               WHEN ck2:   --comandos <= “00100010”;
-      --               WHEN ck3:   --comandos <= “10000100”;
-      --               WHEN ck4:   --comandos <= “00100100”;
-      --               WHEN ck5:   --comandos <= “00100100”;
-      --               WHEN ck6:   --comandos <= “01000001”;
-	 --				 WHEN ck7:   comandos <= “00000000”;     fin <= ‘1’;
-      --               WHEN others: 
-      --         END CASE;
-      --     END IF; 
-      --END PROCESS;
-END behavior;
+architecture behavior of control is
+  constant idle                                                           : unsigned(3 downto 0) := "0000";
+  constant ck0                                                            : unsigned(3 downto 0) := "0001";
+  constant ck1                                                            : unsigned(3 downto 0) := "0010";
+  constant ck2                                                            : unsigned(3 downto 0) := "0011";
+  constant ck3                                                            : unsigned(3 downto 0) := "0100";
+  constant ck4                                                            : unsigned(3 downto 0) := "0101";
+  constant ck5                                                            : unsigned(3 downto 0) := "0110";
+  constant ck6                                                            : unsigned(3 downto 0) := "0111";
+  constant ck7                                                            : unsigned(3 downto 0) := "1000";
+  constant ck8                                                            : unsigned(3 downto 0) := "1001";
+  constant ck9                                                            : unsigned(3 downto 0) := "1010";
+  constant ck10                                                           : unsigned(3 downto 0) := "1011";
+  signal counter                                                          : unsigned(4 downto 0);
+  signal estado_uns : unsigned(3 downto 0);
+begin
+  Proc_Estado : process (reset, clk)
+  begin
+    if reset = '0' then
+      estado_uns <= idle;
+      fin <= '0';
+      counter <= (others => '0');
+    elsif (clk'event and clk = '1') then
+      fin <= '0';
+      if (validacion = '1') then
+        estado_uns <= ck0;
+      else
+          case estado_uns is
+            when idle =>
+                estado_uns <= idle;
+            when ck10 =>
+              estado_uns <= ck0;
+              counter <= counter + 1;
+              if (counter = 16) then
+                fin <= '1';
+                counter <= (others => '0');
+                estado_uns <= idle;
+              end if;
+            when others =>
+              estado_uns <= estado_uns + 1;
+          end case;
+      end if;
+    end if;
+  end process;
+  estado <= std_logic_vector(estado_uns);
+end behavior;

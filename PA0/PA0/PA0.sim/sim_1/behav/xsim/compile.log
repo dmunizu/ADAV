@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA0/VHDL PA0/datapath.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'datapath'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA0/VHDL PA0/int_salida.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'interfaz_salida'
