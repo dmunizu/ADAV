@@ -11,18 +11,17 @@ entity datapath is
 end datapath;
 
 architecture behavior of datapath is
-  constant idle                                                           : unsigned(3 downto 0) := "0000";
-  constant ck0                                                            : unsigned(3 downto 0) := "0001";
-  constant ck1                                                            : unsigned(3 downto 0) := "0010";
-  constant ck2                                                            : unsigned(3 downto 0) := "0011";
-  constant ck3                                                            : unsigned(3 downto 0) := "0100";
-  constant ck4                                                            : unsigned(3 downto 0) := "0101";
-  constant ck5                                                            : unsigned(3 downto 0) := "0110";
-  constant ck6                                                            : unsigned(3 downto 0) := "0111";
-  constant ck7                                                            : unsigned(3 downto 0) := "1000";
-  constant ck8                                                            : unsigned(3 downto 0) := "1001";
-  constant ck9                                                            : unsigned(3 downto 0) := "1010";
-  constant ck10                                                           : unsigned(3 downto 0) := "1011";
+  constant ck0                                                            : unsigned(3 downto 0) := "0000";
+  constant ck1                                                            : unsigned(3 downto 0) := "0001";
+  constant ck2                                                            : unsigned(3 downto 0) := "0010";
+  constant ck3                                                            : unsigned(3 downto 0) := "0011";
+  constant ck4                                                            : unsigned(3 downto 0) := "0100";
+  constant ck5                                                            : unsigned(3 downto 0) := "0101";
+  constant ck6                                                            : unsigned(3 downto 0) := "0110";
+  constant ck7                                                            : unsigned(3 downto 0) := "0111";
+  constant ck8                                                            : unsigned(3 downto 0) := "1000";
+  constant ck9                                                            : unsigned(3 downto 0) := "1001";
+  constant ck10                                                           : unsigned(3 downto 0) := "1010";
   signal estado_uns                                                       : unsigned(3 downto 0);
   signal tmp0, reg1, reg2, reg3, reg4, reg5, reg6                         : signed(23 downto 0);
   signal reg1_next, reg2_next, reg3_next, reg4_next, reg5_next, reg6_next : signed(23 downto 0);
@@ -45,7 +44,7 @@ architecture behavior of datapath is
 
 begin
   -- Asignación de entradas de sumador y multiplicador
-  Assign : process (estado, reg1, reg2, reg3, reg4, reg5, reg6, tmp0, estado_uns)
+  Assign : process (estado, reg1, reg2, reg3, reg4, reg5, reg6, tmp0)
   begin
     sum1 <= (others => '0');
     sum2 <= (others => '0');
@@ -108,7 +107,7 @@ begin
   mul <= mul1 * mul2;
 
   -- Asignación de salidas
-  Assign_out : process (estado, sum, mul, t_mul, reg1, reg2, reg3, reg4, reg5, reg6, estado_uns)
+  Assign_out : process (estado, sum, mul, t_mul, reg1, reg2, reg3, reg4, reg5, reg6)
   begin
     salidas_next <= salidas_i;
     reg1_next <= reg1;
@@ -117,15 +116,8 @@ begin
     reg4_next <= reg4;
     reg5_next <= reg5;
     reg6_next <= reg6;
-    t_mul     <= mul(39 downto 16);
+    t_mul        <= mul(39 downto 16);
     case estado_uns is
-      when idle =>
-        reg1_next <= (others => '0');
-        reg2_next <= (others => '0');
-        reg3_next <= (others => '0');
-        reg4_next <= (others => '0');
-        reg5_next <= (others => '0');
-        reg6_next <= (others => '0');
       when ck0 =>
         reg1_next <= t_mul;
       when ck1 =>

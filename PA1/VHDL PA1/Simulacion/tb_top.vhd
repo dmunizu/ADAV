@@ -91,6 +91,7 @@ begin
     wait until valid_out = '0';
     wait for period;
     ack_in <= '0';
+    wait for 50 * period;
     wait;
   end process;
   -- OUTPUT DATA
