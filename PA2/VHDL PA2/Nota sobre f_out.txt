@@ -1,0 +1,2 @@
+El f_out de esta carpeta es una copia del generado en PA2.sim\sim_1\behav\xsim para un acceso más fácil a los datos de salida.
+Sin embargo, hay que tener en cuenta que si se vuelve a ejecutar la simulación los datos se generarán en la carpeta xsim, no en esta.

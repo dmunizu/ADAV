@@ -12,8 +12,7 @@ entity datapath is
     entradas_2 : in std_logic_vector(23 downto 0);
     salidas_0  : out std_logic_vector(23 downto 0);
     salidas_1  : out std_logic_vector(23 downto 0);
-    salidas_2  : out std_logic_vector(23 downto 0);
-    flags      : out std_logic_vector(7 downto 0));
+    salidas_2  : out std_logic_vector(23 downto 0));
 end datapath;
 
 architecture behavior of datapath is
@@ -186,8 +185,6 @@ begin
   tmp16_2   <= tmp7_2 + tmp12_2;
   tmp17_2   <= tmp6_2 + tmp13_2;
   tmp18_2   <= tmp5_2 + tmp14_2;
-
-  flags <= (others => '0');
 
   salidas_0 <= std_logic_vector(tmp10_0);
   salidas_1 <= std_logic_vector(tmp10_1);

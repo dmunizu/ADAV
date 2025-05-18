@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="880.834 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,685.835 ns"></ZoomEndTime>
-      <Cursor1Time time="1,015.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="50.000001 us"></ZoomEndTime>
+      <Cursor1Time time="1.125000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="151"></NameColumnWidth>
-      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+      <ValueColumnWidth column_width="102"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="11" />
    <wvobject fp_name="/tb_top/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
@@ -65,45 +65,8 @@
       <obj_property name="ElementShortName">valid_out</obj_property>
       <obj_property name="ObjectShortName">valid_out</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U2/estado" type="array">
-      <obj_property name="ElementShortName">estado[1:0]</obj_property>
-      <obj_property name="ObjectShortName">estado[1:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/entradas_0" type="array">
-      <obj_property name="ElementShortName">entradas_0[23:0]</obj_property>
-      <obj_property name="ObjectShortName">entradas_0[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/entradas_1" type="array">
-      <obj_property name="ElementShortName">entradas_1[23:0]</obj_property>
-      <obj_property name="ObjectShortName">entradas_1[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/entradas_2" type="array">
-      <obj_property name="ElementShortName">entradas_2[23:0]</obj_property>
-      <obj_property name="ObjectShortName">entradas_2[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/salidas_0" type="array">
-      <obj_property name="ElementShortName">salidas_0[23:0]</obj_property>
-      <obj_property name="ObjectShortName">salidas_0[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/salidas_1" type="array">
-      <obj_property name="ElementShortName">salidas_1[23:0]</obj_property>
-      <obj_property name="ObjectShortName">salidas_1[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/salidas_2" type="array">
-      <obj_property name="ElementShortName">salidas_2[23:0]</obj_property>
-      <obj_property name="ObjectShortName">salidas_2[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/tmp5_1" type="array">
-      <obj_property name="ElementShortName">tmp5_1[23:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp5_1[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/tmp0_0" type="array">
-      <obj_property name="ElementShortName">tmp0_0[23:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp0_0[23:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/UUT/U1/sv1_0" type="array">
-      <obj_property name="ElementShortName">sv1_0[23:0]</obj_property>
-      <obj_property name="ObjectShortName">sv1_0[23:0]</obj_property>
+   <wvobject fp_name="/tb_top/UUT/U2/estado" type="logic">
+      <obj_property name="ElementShortName">estado</obj_property>
+      <obj_property name="ObjectShortName">estado</obj_property>
    </wvobject>
 </wave_config>

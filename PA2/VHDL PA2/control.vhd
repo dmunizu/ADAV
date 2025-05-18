@@ -7,7 +7,6 @@ entity control is
   port (
     reset, clk : in std_logic;
     validacion : in std_logic;
-    flags      : in std_logic_vector(7 downto 0);
     estado     : out std_logic;
     fin        : out std_logic);
 end control;

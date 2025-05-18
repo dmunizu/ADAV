@@ -26,15 +26,13 @@ architecture behavior of top is
       entradas_2 : in std_logic_vector(23 downto 0);
       salidas_0  : out std_logic_vector(23 downto 0);
       salidas_1  : out std_logic_vector(23 downto 0);
-      salidas_2  : out std_logic_vector(23 downto 0);
-      flags      : out std_logic_vector(7 downto 0));
+      salidas_2  : out std_logic_vector(23 downto 0));
   end component;
 
   component control is
     port (
       reset, clk : in std_logic;
       validacion : in std_logic;
-      flags      : in std_logic_vector(7 downto 0);
       estado     : out std_logic;
       fin        : out std_logic);
   end component;
@@ -64,7 +62,6 @@ architecture behavior of top is
       valid_out  : out std_logic);
   end component;
   signal entradas_0, entradas_1, entradas_2, salidas_0, salidas_1, salidas_2 : std_logic_vector(23 downto 0);
-  signal flags                                                               : std_logic_vector(7 downto 0);
   signal estado                                                              : std_logic;
   signal fin                                                                 : std_logic;
 begin
@@ -74,14 +71,13 @@ begin
     reset => reset, clk => clk,
     estado => estado,
     entradas_0 => entradas_0, entradas_1 => entradas_1, entradas_2 => entradas_2,
-    salidas_0 => salidas_0, salidas_1 => salidas_1, salidas_2 => salidas_2,
-    flags  => flags);
+    salidas_0 => salidas_0, salidas_1 => salidas_1, salidas_2 => salidas_2);
 
   U2 : control
   port map
   (
     reset => reset, clk => clk,
-    validacion => validacion, estado => estado, flags => flags, fin => fin);
+    validacion => validacion, estado => estado, fin => fin);
 
   U3 : interfaz_entrada
   port map
