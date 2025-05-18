@@ -6,7 +6,7 @@ use IEEE.std_logic_signed.all;
 entity datapath is
   port (
     reset, clk : in std_logic;
-    estado     : in std_logic_vector(1 downto 0);
+    estado     : in std_logic;
     entradas_0 : in std_logic_vector(23 downto 0);
     entradas_1 : in std_logic_vector(23 downto 0);
     entradas_2 : in std_logic_vector(23 downto 0);
@@ -64,13 +64,11 @@ begin
       m_tmp4_0 <= (others => '0');
       m_tmp5_0 <= (others => '0');
     elsif (clk'event and clk = '1') then
-      if estado(0) = '1' then
         m_tmp1_0 <= tmp0_2 * b1;
         m_tmp2_0 <= tmp0_2 * b2;
         m_tmp3_0 <= tmp0_2 * b3;
         m_tmp4_0 <= tmp0_2 * b4;
         m_tmp5_0 <= tmp0_2 * b5;
-      end if;
     end if;
   end process;
   -- SV
@@ -82,7 +80,7 @@ begin
       sv2_0 <= (others => '0');
       sv1_0 <= (others => '0');
     elsif (clk'event and clk = '1') then
-      if estado(1) = '1' then
+      if estado = '1' then
         sv4_0 <= tmp18_2;
         sv3_0 <= tmp17_2;
         sv2_0 <= tmp16_2;

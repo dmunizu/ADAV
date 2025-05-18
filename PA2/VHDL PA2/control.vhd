@@ -8,7 +8,7 @@ entity control is
     reset, clk : in std_logic;
     validacion : in std_logic;
     flags      : in std_logic_vector(7 downto 0);
-    estado     : out std_logic_vector(1 downto 0);
+    estado     : out std_logic;
     fin        : out std_logic);
 end control;
 
@@ -17,17 +17,15 @@ begin
   Proc_Estado : process (reset, clk)
   begin
     if reset = '0' then
-      estado <= (others => '0');
+      estado <= '0';
     elsif (clk'event and clk = '1') then
       if validacion = '0' then
-        estado <= (others => '0');
+        estado <= '0';
+        fin <= '0';
       else
-        estado(0) <= '1';
-      end if;
-      if estado(0) = '1' then
-        estado(1) <= '1';
+        estado <= '1';
+        fin <= '1';
       end if;
     end if;
   end process;
-  fin <= estado(1);
 end behavior;

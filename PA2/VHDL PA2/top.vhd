@@ -20,7 +20,7 @@ architecture behavior of top is
   component datapath is
     port (
       reset, clk : in std_logic;
-      estado     : in std_logic_vector(1 downto 0);
+      estado     : in std_logic;
       entradas_0 : in std_logic_vector(23 downto 0);
       entradas_1 : in std_logic_vector(23 downto 0);
       entradas_2 : in std_logic_vector(23 downto 0);
@@ -35,7 +35,7 @@ architecture behavior of top is
       reset, clk : in std_logic;
       validacion : in std_logic;
       flags      : in std_logic_vector(7 downto 0);
-      estado     : out std_logic_vector(1 downto 0);
+      estado     : out std_logic;
       fin        : out std_logic);
   end component;
 
@@ -65,7 +65,7 @@ architecture behavior of top is
   end component;
   signal entradas_0, entradas_1, entradas_2, salidas_0, salidas_1, salidas_2 : std_logic_vector(23 downto 0);
   signal flags                                                               : std_logic_vector(7 downto 0);
-  signal estado                                                              : std_logic_vector(1 downto 0);
+  signal estado                                                              : std_logic;
   signal fin                                                                 : std_logic;
 begin
   U1 : datapath

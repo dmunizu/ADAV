@@ -83,21 +83,21 @@ begin
   end process;
   -- OUTPUT DATA
   Proc_save_data : process (clk)
-    variable v_data_out : bit_vector(23 downto 0);
+    variable v_data_out_0, v_data_out_1, v_data_out_2 : bit_vector(23 downto 0);
     variable v_linea    : line;
   begin
     if (clk'event and clk = '1') then
       --ack_out <= '0' after 1 ns;
       if (valid_out = '1') then
         --ack_out <= '1' after 2 ns;
-        v_data_out := To_BitVector(data_out_0);
-        WRITE(v_linea, v_data_out);
+        v_data_out_0 := To_BitVector(data_out_0);
+        v_data_out_1 := To_BitVector(data_out_1);
+        v_data_out_2 := To_BitVector(data_out_2);
+        WRITE(v_linea, v_data_out_0);
         WRITELINE(f_out, v_linea);
-        v_data_out := To_BitVector(data_out_1);
-        WRITE(v_linea, v_data_out);
+        WRITE(v_linea, v_data_out_1);
         WRITELINE(f_out, v_linea);
-        v_data_out := To_BitVector(data_out_2);
-        WRITE(v_linea, v_data_out);
+        WRITE(v_linea, v_data_out_2);
         WRITELINE(f_out, v_linea);
       end if;
     end if;

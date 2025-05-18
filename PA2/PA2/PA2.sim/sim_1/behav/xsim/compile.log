@@ -1,2 +1,12 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA0/VHDL PA0/int_salida.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/control.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'control'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/datapath.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'datapath'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/int_entrada.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'interfaz_entrada'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/int_salida.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'interfaz_salida'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'top'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Portatil/Desktop/Trabajos/Practicas/ADAV/PA2/VHDL PA2/tb_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_top'
